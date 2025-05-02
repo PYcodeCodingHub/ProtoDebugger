@@ -1,0 +1,67 @@
+-- Toggle Button (Circular with Tick Icon)
+local ToggleButton = Instance.new("ImageButton")
+ToggleButton.Parent = developerConsole
+ToggleButton.BackgroundTransparency = 1
+ToggleButton.Position = UDim2.new(0.95, -50, 0.05, 0)
+ToggleButton.Size = UDim2.new(0, 40, 0, 40)
+ToggleButton.Image = "rbxassetid://6034973948" -- Tick icon
+ToggleButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Make the button circular
+local UICornerToggle = Instance.new("UICorner")
+UICornerToggle.CornerRadius = UDim.new(1, 0)
+UICornerToggle.Parent = ToggleButton
+
+local UIAspectRatio = Instance.new("UIAspectRatioConstraint")
+UIAspectRatio.Parent = ToggleButton
+UIAspectRatio.AspectRatio = 1
+
+ToggleButton.MouseButton1Click:Connect(function()
+    Frame.Visible = not Frame.Visible
+end)
+
+-- Input Box (Rounded & Larger Text)
+local InputBox = Instance.new("TextBox")
+InputBox.Parent = Frame
+InputBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+InputBox.Position = UDim2.new(0.05, 0, 0.85, 0)
+InputBox.Size = UDim2.new(0.7, 0, 0.1, 0)
+InputBox.Text = "Enter command..."
+InputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+InputBox.Font = Enum.Font.GothamBold -- Improved readability
+InputBox.TextSize = 18 -- Larger for accessibility
+
+local UICornerInput = Instance.new("UICorner")
+UICornerInput.CornerRadius = UDim.new(0, 10)
+UICornerInput.Parent = InputBox
+
+-- Execute Button (Rounded & Larger Text)
+local ExecuteButton = Instance.new("TextButton")
+ExecuteButton.Parent = Frame
+ExecuteButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+ExecuteButton.Position = UDim2.new(0.75, 0, 0.85, 0)
+ExecuteButton.Size = UDim2.new(0.2, 0, 0.1, 0)
+ExecuteButton.Text = "Run"
+ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExecuteButton.Font = Enum.Font.GothamBold
+ExecuteButton.TextSize = 18 -- Larger for accessibility
+
+local UICornerExecute = Instance.new("UICorner")
+UICornerExecute.CornerRadius = UDim.new(0, 10)
+UICornerExecute.Parent = ExecuteButton
+
+-- Output Text (Larger for Visibility)
+local function addConsoleOutput(text, textColor)
+    local newOutput = Instance.new("TextLabel")
+    newOutput.Size = UDim2.new(1, 0, 0, 0)
+    newOutput.TextWrapped = true
+    newOutput.TextYAlignment = Enum.TextYAlignment.Top
+    newOutput.TextColor3 = textColor or Color3.fromRGB(255, 255, 255)
+    newOutput.Font = Enum.Font.GothamBold -- Better legibility
+    newOutput.TextSize = 18 -- Larger for accessibility
+    newOutput.BackgroundTransparency = 1
+    newOutput.Text = text
+    newOutput.Parent = OutputFrame
+    newOutput.Size = UDim2.new(1, 0, 0, newOutput.TextBounds.Y + 10)
+    updateCanvasSize()
+end
