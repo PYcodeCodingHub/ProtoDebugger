@@ -12,3 +12,5 @@ then paste the code into the script and enjoy
 Make sure to copy your game for this debug build, or delete the script after use.
 
 If you have a roblox executor, you may use the script in there.
+
+# NOTE THAT COMMANDS DONT OVERLAY, TYOE /CLEARCONSOLE RUN OTHER CMDS
